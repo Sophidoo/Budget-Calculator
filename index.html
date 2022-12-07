@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=., initial-scale=1.0">
+    <link rel="stylesheet" href="Stylesheet/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+    <title>Document</title>
+</head>
+<body>
+    <div class="hero">
+        
+        <div class="left-hero">
+
+            <h1>My Budget Calculator</h1>
+
+            <div class="left-wrapper">
+                <form action="" id="set-expense">
+                    <div class="input-wrapper">
+                        <label for="">Income</label>
+                        <input type="number" placeholder="0.00" id="income" onkeyup="setIncome()">
+                        <p id="incomeError">Please input your monthly Income</p>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="">Age</label>
+                        <input type="number">
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="">Gender</label>
+                        <select name="Gender" id="">
+                            <option value="none">None</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="">Marital Status</label>
+                        <select name="" id="">
+                            <option value="none">None</option>
+                            <option value="Single">Single</option>
+                            <option value="married">Married</option>
+                            <option value="divorced">Divorced</option>
+                        </select>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="">Number of Dependents</label>
+                        <input type="number">
+                    </div>
+                    <button type="submit">Submit</button>
+                </form>
+
+                <div class="expenseWrapper">
+                    <h2>My Monthly Expenses</h2>
+                    <form action="" onsubmit="submitForm(e)" id="expenseForm">
+                        <div class="input-wrapper">
+                            <label for="">Housing</label>
+                            <input type="number" placeholder="0.00" id="housing" onkeyup="setExpenseCalculator()">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Transportation</label>
+                            <input type="number" placeholder="0.00" id="transport"  onkeyup="setExpenseCalculator()">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Food</label>
+                            <input type="number" placeholder="0.00" id="food"  onkeyup="setExpenseCalculator()">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Utilities</label>
+                            <input type="number" placeholder="0.00" id="utilities"  onkeyup="setExpenseCalculator()">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Insurance</label>
+                            <input type="number" placeholder="0.00" id="insurance"  onkeyup="setExpenseCalculator()">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Medical & Healthcare</label>
+                            <input type="number" placeholder="0.00" id="medicals"  onkeyup="setExpenseCalculator()"> 
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Invest</label>
+                            <input type="number" placeholder="0.00" id="invest"  onkeyup="setExpenseCalculator()">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Personal Savings</label>
+                            <input type="number" placeholder="0.00" id="savings"  onkeyup="setExpenseCalculator()"> 
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Entertainment</label>
+                            <input type="number" placeholder="0.00" id="entertainment"  onkeyup="setExpenseCalculator()">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="">Emergency</label>
+                            <input type="number" placeholder="0.00" id="emergency"  onkeyup="setExpenseCalculator()">
+                        </div>
+                        <button type="submit" id="expense-button" class="expenseButton">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="right-hero">
+
+            <div class="right-wrapper hide" id="income-wrapper">
+                <form action="">
+                    <div class="input-wrapper">
+                        <label for="">Total Monthly Income</label>
+                        <input type="number" value = "0.00" id = "incomeValue" disabled>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="">Total Monthly Expenses</label>
+                        <input type="number" value = "0.00" id = "expense" disabled>
+                    </div>
+                    <div class="input-wrapper">
+                        <label for="">Under/Over Budget</label>
+                        <input type="number" value = "0.00" id="budget" disabled>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="my-budget" id = "my-budget" style="display: none;">
+        <div class="card-wrapper">
+            <div class="cancel" onclick="closeBudget()">x</div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    home
+                    </span>
+                <div class="budget-info">
+                    <h3>Housing</h3>
+                    <div class="heading">
+                        <p id="calcHousingIncome">N0.00</p>
+                        <p id="percHousing">20%</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    tram
+                    </span>
+                <div class="budget-info">
+                    <h3>Transportation</h3>
+                    <div class="heading">
+                        <p id="calcTransportIncome">N0.00</p>
+                        <p id="percTransport">20%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    ramen_dining
+                    </span>
+                <div class="budget-info">
+                    <h3>Food</h3>
+                    <div class="heading">
+                        <p id="calcFoodIncome">N0.00</p>
+                        <p id="percFood">20%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    power
+                    </span>
+                <div class="budget-info">
+                    <h3>Utilities</h3>
+                    <div class="heading">
+                        <p id="calcUtilitiesIncome">N0.00</p>
+                        <p id="percUtility">20%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    payments
+                    </span>
+                <div class="budget-info">
+                    <h3>Insurance</h3>
+                    <div class="heading">
+                        <p id="calcInsuranceIncome">N0.00</p>
+                        <p id="percInsurance">20%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    medical_services
+                    </span>
+                <div class="budget-info">
+                    <h3>Medical & Healthcare</h3>
+                    <div class="heading">
+                        <p id="calcMedicalIncome">N0.00</p>
+                        <p id="percMedical">20%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    volunteer_activism
+                    </span>
+                <div class="budget-info">
+                    <h3>Invest</h3>
+                    <div class="heading">
+                        <p id="calcInvestIncome">N0.00</p>
+                        <p id="percInvest">20%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    savings
+                    </span>
+                <div class="budget-info">
+                    <h3>Personal Savings</h3>
+                    <div class="heading">
+                        <p id="calcSavingIncome">N0.00</p>
+                        <p id="percSaving">20%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    sports_esports
+                    </span>
+                <div class="budget-info">
+                    <h3>Entertainments</h3>
+                    <div class="heading">
+                        <p id="calcEntertainIncome">N0.00</p>
+                        <p id="percEntertainment">20%</p>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="material-symbols-outlined">
+                    emergency_home
+                    </span>
+                <div class="budget-info">
+                    <h3>Emergency</h3>
+                    <div class="heading">
+                        <p id="calcEmergencyIncome">N0.00</p>
+                        <p id="percEmergency">20%</p>
+                    </div>
+                </div>
+            </div>
+    
+
+        </div>
+
+    </div>
+
+    <script src="index.js">
+
+    </script>
+</body>
+</html>
